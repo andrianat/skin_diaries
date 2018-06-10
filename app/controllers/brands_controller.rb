@@ -6,6 +6,7 @@ class BrandsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.new
     @brand = Brand.find(params[:id])
 
     render("brands/show.html.erb")

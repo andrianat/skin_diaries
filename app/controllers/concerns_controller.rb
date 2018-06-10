@@ -6,6 +6,7 @@ class ConcernsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.new
     @concern = Concern.find(params[:id])
 
     render("concerns/show.html.erb")

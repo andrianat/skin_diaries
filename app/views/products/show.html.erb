@@ -63,6 +63,47 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_favorite" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for users_id -->
+      <input type="hidden" name="users_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for products_id -->
+      <div class="form-group">
+        <label for="products_id" class="control-label">
+          Products
+        </label>
+
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for brands_id -->
+      <div class="form-group">
+        <label for="brands_id" class="control-label">
+          Brands
+        </label>
+
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for concerns_id -->
+      <div class="form-group">
+        <label for="concerns_id" class="control-label">
+          Concerns
+        </label>
+
+        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Favorite
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
