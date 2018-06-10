@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Favorite #<%= @favorite.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Users</dt>
+      <dd><%= @favorite.users_id %></dd>
+
+      <dt>Products</dt>
+      <dd><%= @favorite.products_id %></dd>
+
+      <dt>Brands</dt>
+      <dd><%= @favorite.brands_id %></dd>
+
+      <dt>Concerns</dt>
+      <dd><%= @favorite.concerns_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/favorites" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/favorites/<%= @favorite.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_favorite/<%= @favorite.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

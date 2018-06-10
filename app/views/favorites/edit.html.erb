@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @favorite.errors.any? %>
+  <% @favorite.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Favorite #<%= @favorite.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_favorite/<%= @favorite.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for users_id -->
+      <div class="form-group">
+        <label for="users_id" class="control-label">
+          Users
+        </label>
+
+        <input type="text" id="users_id" name="users_id" placeholder="Users" class="form-control" value="<%= @favorite.users_id %>">
+      </div>
+
+      <!-- Label and input for products_id -->
+      <div class="form-group">
+        <label for="products_id" class="control-label">
+          Products
+        </label>
+
+        <input type="text" id="products_id" name="products_id" placeholder="Products" class="form-control" value="<%= @favorite.products_id %>">
+      </div>
+
+      <!-- Label and input for brands_id -->
+      <div class="form-group">
+        <label for="brands_id" class="control-label">
+          Brands
+        </label>
+
+        <input type="text" id="brands_id" name="brands_id" placeholder="Brands" class="form-control" value="<%= @favorite.brands_id %>">
+      </div>
+
+      <!-- Label and input for concerns_id -->
+      <div class="form-group">
+        <label for="concerns_id" class="control-label">
+          Concerns
+        </label>
+
+        <input type="text" id="concerns_id" name="concerns_id" placeholder="Concerns" class="form-control" value="<%= @favorite.concerns_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Favorite
+      </button>
+      or
+      <a href="/favorites/<%= @favorite.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
