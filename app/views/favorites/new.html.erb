@@ -42,7 +42,7 @@
           Brands
         </label>
 
-        <input type="text" id="brands_id" name="brands_id" placeholder="Brands" class="form-control" value="<%= @favorite.brands_id %>">
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name, @favorite.brands_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for concerns_id -->
