@@ -1,8 +1,8 @@
-class Concern < ApplicationRecord
+class Need < ApplicationRecord
   # Direct associations
 
   has_many   :favorites,
-             :foreign_key => "concerns_id",
+             :foreign_key => "needs_id",
              :dependent => :destroy
 
   # Indirect associations

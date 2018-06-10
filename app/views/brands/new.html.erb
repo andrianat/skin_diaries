@@ -18,13 +18,13 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for name -->
+      <!-- Label and input for brandname -->
       <div class="form-group">
-        <label for="name" class="control-label">
-          Name
+        <label for="brandname" class="control-label">
+          Brandname
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @brand.name %>">
+        <input type="text" id="brandname" name="brandname" placeholder="Brandname" class="form-control" value="<%= @brand.brandname %>">
       </div>
 
       <button class="btn btn-success">

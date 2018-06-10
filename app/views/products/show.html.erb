@@ -5,20 +5,20 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Category</dt>
-      <dd><%= @product.category %></dd>
-
       <dt>Description</dt>
       <dd><%= @product.description %></dd>
 
-      <dt>Active ingredients</dt>
-      <dd><%= @product.active_ingredients %></dd>
+      <dt>Ingredients</dt>
+      <dd><%= @product.ingredients %></dd>
 
       <dt>Use</dt>
       <dd><%= @product.use %></dd>
 
-      <dt>Brand</dt>
-      <dd><%= @product.brand_id %></dd>
+      <dt>Product name</dt>
+      <dd><%= @product.product_name %></dd>
+
+      <dt>Favorite</dt>
+      <dd><%= @product.favorite %></dd>
 
     </dl>
 
@@ -78,7 +78,7 @@
           Products
         </label>
 
-        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category), :class => "form-control") %>
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :created_at), :class => "form-control") %>
       </div>
 
       <!-- Label and input for brands_id -->
@@ -87,16 +87,16 @@
           Brands
         </label>
 
-        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :brandname), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for concerns_id -->
+      <!-- Label and input for needs_id -->
       <div class="form-group">
-        <label for="concerns_id" class="control-label">
-          Concerns
+        <label for="needs_id" class="control-label">
+          Needs
         </label>
 
-        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at), :class => "form-control") %>
+        <%= select_tag(:needs_id, options_from_collection_for_select(Need.all, :id, :need_type), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
@@ -120,7 +120,7 @@
       <% @product.brands.each do |brand| %>
         <li class="list-group-item">
           <a href="/brands/<%= brand.id %>">
-            <%= brand.name %>
+            <%= brand.brandname %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/brands/<%= brand.id %>" class="btn btn-primary">
@@ -139,28 +139,28 @@
   </div>
 </div>
 
-<!-- A Product has many concerns -->
+<!-- A Product has many needs -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Concerns
+        Needs
       </li>
 
-      <% @product.concerns.each do |concern| %>
+      <% @product.needs.each do |need| %>
         <li class="list-group-item">
-          <a href="/concerns/<%= concern.id %>">
-            <%= concern.created_at %>
+          <a href="/needs/<%= need.id %>">
+            <%= need.need_type %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/concerns/<%= concern.id %>" class="btn btn-primary">
+            <a href="/needs/<%= need.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/concerns/<%= concern.id %>/edit" class="btn btn-warning">
+            <a href="/needs/<%= need.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_concern/<%= concern.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_need/<%= need.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>

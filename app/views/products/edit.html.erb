@@ -18,15 +18,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for category -->
-      <div class="form-group">
-        <label for="category" class="control-label">
-          Category
-        </label>
-
-        <input type="text" id="category" name="category" placeholder="Category" class="form-control" value="<%= @product.category %>">
-      </div>
-
       <!-- Label and input for description -->
       <div class="form-group">
         <label for="description" class="control-label">
@@ -36,13 +27,13 @@
         <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @product.description %>">
       </div>
 
-      <!-- Label and input for active_ingredients -->
+      <!-- Label and input for ingredients -->
       <div class="form-group">
-        <label for="active_ingredients" class="control-label">
-          Active ingredients
+        <label for="ingredients" class="control-label">
+          Ingredients
         </label>
 
-        <input type="text" id="active_ingredients" name="active_ingredients" placeholder="Active ingredients" class="form-control" value="<%= @product.active_ingredients %>">
+        <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients" class="form-control" value="<%= @product.ingredients %>">
       </div>
 
       <!-- Label and input for use -->
@@ -54,13 +45,21 @@
         <input type="text" id="use" name="use" placeholder="Use" class="form-control" value="<%= @product.use %>">
       </div>
 
-      <!-- Label and input for brand_id -->
+      <!-- Label and input for product_name -->
       <div class="form-group">
-        <label for="brand_id" class="control-label">
-          Brand
+        <label for="product_name" class="control-label">
+          Product name
         </label>
 
-        <input type="text" id="brand_id" name="brand_id" placeholder="Brand" class="form-control" value="<%= @product.brand_id %>">
+        <input type="text" id="product_name" name="product_name" placeholder="Product name" class="form-control" value="<%= @product.product_name %>">
+      </div>
+
+      <!-- Label and input for favorite -->
+      <div class="checkbox">
+        <label for="favorite">
+          <input type="checkbox" id="favorite" name="favorite" value="1" <%= "checked" if @product.favorite %>>
+          Favorite
+        </label>
       </div>
 
       <button class="btn btn-warning">

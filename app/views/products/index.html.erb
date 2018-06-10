@@ -9,21 +9,24 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-    <%= f.label :category_cont, "Category contains" %>
-    <%= f.text_field :category_cont, :class => "form-control", :placeholder => "Category contains" %>
+    <%= f.label :favorite_eq, "Favorite" %>
+    <div>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, "1", checked: ((params[:q] && params[:q][:favorite_eq]) == "1" ? "checked" : "") %> Yes
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, "0", checked: ((params[:q] && params[:q][:favorite_eq]) == "0" ? "checked" : "")%> No
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :favorite_eq, ""%> Either
+      </label>
+    </div>
   </div>
 
 <div class="form-group">
-  <%= f.label :brand_id, "Brand" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :brand_id_gteq, :class => "form-control", :placeholder => "Brand greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :brand_id_lteq, :class => "form-control", :placeholder => "Brand less than or equal to" %>
-    </div>
+    <%= f.label :product_name_cont, "Product name contains" %>
+    <%= f.text_field :product_name_cont, :class => "form-control", :placeholder => "Product name contains" %>
   </div>
-</div>
 
 <div class="form-group">
     <%= f.label :use_cont, "Use contains" %>
@@ -31,8 +34,8 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :active_ingredients_cont, "Active ingredients contains" %>
-    <%= f.text_field :active_ingredients_cont, :class => "form-control", :placeholder => "Active ingredients contains" %>
+    <%= f.label :ingredients_cont, "Ingredients contains" %>
+    <%= f.text_field :ingredients_cont, :class => "form-control", :placeholder => "Ingredients contains" %>
   </div>
 
 <div class="form-group">
@@ -81,49 +84,14 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :brands_name_cont, "Brand name contains" %>
-      <%= f.text_field :brands_name_cont, :class => "form-control", :placeholder => "Brand name contains" %>
+      <%= f.label :brands_brandname_cont, "Brand brandname contains" %>
+      <%= f.text_field :brands_brandname_cont, :class => "form-control", :placeholder => "Brand brandname contains" %>
     </div>
 
 <div class="form-group">
-          <%= f.label :created_at, "Concern Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='concernsgteqcreated_atPicker'>
-                  <%= f.text_field :concerns_created_at_gteq, :class => "form-control", :placeholder => "Concern Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='concernslteqcreated_atPicker'>
-                  <%= f.text_field :concerns_created_at_lteq, :class => "form-control", :placeholder => "Concern Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#concernsgteqcreated_atPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#concernslteqcreated_atPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#concernsgteqcreated_atPicker').on("dp.change", function (e) {
-                  $('#concernslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#concernslteqcreated_atPicker').on("dp.change", function (e) {
-                  $('#concernsgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
+      <%= f.label :needs_need_type_cont, "Need need_type contains" %>
+      <%= f.text_field :needs_need_type_cont, :class => "form-control", :placeholder => "Need need_type contains" %>
+    </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -139,21 +107,21 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Category</th>
         <th>Description</th>
-        <th>Active ingredients</th>
+        <th>Ingredients</th>
         <th>Use</th>
-        <th>Brand</th>
+        <th>Product name</th>
+        <th>Favorite</th>
         <th>Actions</th>
       </tr>
 
       <% @products.each do |product| %>
       <tr>
-        <td><%= product.category %></td>
         <td><%= product.description %></td>
-        <td><%= product.active_ingredients %></td>
+        <td><%= product.ingredients %></td>
         <td><%= product.use %></td>
-        <td><%= product.brand_id %></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.favorite %></td>
         <td>
           <a href="/products/<%= product.id %>" class="btn btn-primary">Show</a>
           <a href="/products/<%= product.id %>/edit" class="btn btn-warning">Edit</a>

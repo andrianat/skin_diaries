@@ -34,7 +34,7 @@ class FavoritesController < ApplicationController
     @favorite.users_id = params[:users_id]
     @favorite.products_id = params[:products_id]
     @favorite.brands_id = params[:brands_id]
-    @favorite.concerns_id = params[:concerns_id]
+    @favorite.needs_id = params[:needs_id]
 
     save_status = @favorite.save
 
@@ -62,7 +62,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.products_id = params[:products_id]
     @favorite.brands_id = params[:brands_id]
-    @favorite.concerns_id = params[:concerns_id]
+    @favorite.needs_id = params[:needs_id]
 
     save_status = @favorite.save
 

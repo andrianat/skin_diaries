@@ -4,7 +4,7 @@ class CreateFavorites < ActiveRecord::Migration
       t.integer :users_id
       t.integer :products_id
       t.integer :brands_id
-      t.integer :concerns_id
+      t.integer :needs_id
 
       t.timestamps
 

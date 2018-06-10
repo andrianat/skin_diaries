@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :concerns,
+  has_many   :needs,
              :through => :favorites,
              :source => :concerns
 

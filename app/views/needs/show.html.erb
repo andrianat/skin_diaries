@@ -1,27 +1,30 @@
 <div class="page-header">
-  <h3>Concern #<%= @concern.id %></h3>
+  <h3>Need #<%= @need.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Need type</dt>
+      <dd><%= @need.need_type %></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/concerns" class="btn btn-primary">
+      <a href="/needs" class="btn btn-primary">
         Back
       </a>
-      <a href="/concerns/<%= @concern.id %>/edit" class="btn btn-warning">
+      <a href="/needs/<%= @need.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_concern/<%= @concern.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_need/<%= @need.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Concern has many favorites -->
+<!-- A Need has many favorites -->
 
 <div class="row">
   <div class="col-md-12">
@@ -30,7 +33,7 @@
         Favorites
       </li>
 
-      <% @concern.favorites.each do |favorite| %>
+      <% @need.favorites.each do |favorite| %>
         <li class="list-group-item">
           <a href="/favorites/<%= favorite.id %>">
             <%= favorite.users_id %>
@@ -63,7 +66,7 @@
           Products
         </label>
 
-        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category), :class => "form-control") %>
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :created_at), :class => "form-control") %>
       </div>
 
       <!-- Label and input for brands_id -->
@@ -72,16 +75,16 @@
           Brands
         </label>
 
-        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :brandname), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for concerns_id -->
+      <!-- Label and input for needs_id -->
       <div class="form-group">
-        <label for="concerns_id" class="control-label">
-          Concerns
+        <label for="needs_id" class="control-label">
+          Needs
         </label>
 
-        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at), :class => "form-control") %>
+        <%= select_tag(:needs_id, options_from_collection_for_select(Need.all, :id, :need_type), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
@@ -93,7 +96,7 @@
   </div>
 </div>
 
-<!-- A Concern has many products -->
+<!-- A Need has many products -->
 
 <div class="row">
   <div class="col-md-12">
@@ -102,10 +105,10 @@
         Products
       </li>
 
-      <% @concern.products.each do |product| %>
+      <% @need.products.each do |product| %>
         <li class="list-group-item">
           <a href="/products/<%= product.id %>">
-            <%= product.category %>
+            <%= product.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/products/<%= product.id %>" class="btn btn-primary">

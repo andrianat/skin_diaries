@@ -18,7 +18,7 @@
       <dd>
         <% if @favorite.products.present? %>
           <a href="/products/<%= @favorite.products_id %>">
-            <%= @favorite.products.category %>
+            <%= @favorite.products.created_at %>
           </a>
         <% end %>
       </dd>
@@ -27,16 +27,16 @@
       <dd>
         <% if @favorite.brands.present? %>
           <a href="/brands/<%= @favorite.brands_id %>">
-            <%= @favorite.brands.name %>
+            <%= @favorite.brands.brandname %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Concerns</dt>
+      <dt>Needs</dt>
       <dd>
         <% if @favorite.concerns.present? %>
-          <a href="/concerns/<%= @favorite.concerns_id %>">
-            <%= @favorite.concerns.created_at %>
+          <a href="/needs/<%= @favorite.needs_id %>">
+            <%= @favorite.concerns.need_type %>
           </a>
         <% end %>
       </dd>

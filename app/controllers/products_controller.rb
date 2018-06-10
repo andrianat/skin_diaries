@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result(:distinct => true).includes(:favorites, :brands, :concerns).page(params[:page]).per(10)
+    @products = @q.result(:distinct => true).includes(:favorites, :brands, :needs).page(params[:page]).per(10)
 
     render("products/index.html.erb")
   end
@@ -22,11 +22,11 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new
 
-    @product.category = params[:category]
     @product.description = params[:description]
-    @product.active_ingredients = params[:active_ingredients]
+    @product.ingredients = params[:ingredients]
     @product.use = params[:use]
-    @product.brand_id = params[:brand_id]
+    @product.product_name = params[:product_name]
+    @product.favorite = params[:favorite]
 
     save_status = @product.save
 
@@ -53,11 +53,11 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
-    @product.category = params[:category]
     @product.description = params[:description]
-    @product.active_ingredients = params[:active_ingredients]
+    @product.ingredients = params[:ingredients]
     @product.use = params[:use]
-    @product.brand_id = params[:brand_id]
+    @product.product_name = params[:product_name]
+    @product.favorite = params[:favorite]
 
     save_status = @product.save
 
