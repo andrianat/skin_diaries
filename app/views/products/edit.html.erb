@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Product #<%= @product.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_product/<%= @product.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for category -->
+      <div class="form-group">
+        <label for="category" class="control-label">
+          Category
+        </label>
+
+        <input type="text" id="category" name="category" placeholder="Category" class="form-control" value="<%= @product.category %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @product.description %>">
+      </div>
+
+      <!-- Label and input for active_ingredients -->
+      <div class="form-group">
+        <label for="active_ingredients" class="control-label">
+          Active ingredients
+        </label>
+
+        <input type="text" id="active_ingredients" name="active_ingredients" placeholder="Active ingredients" class="form-control" value="<%= @product.active_ingredients %>">
+      </div>
+
+      <!-- Label and input for use -->
+      <div class="form-group">
+        <label for="use" class="control-label">
+          Use
+        </label>
+
+        <input type="text" id="use" name="use" placeholder="Use" class="form-control" value="<%= @product.use %>">
+      </div>
+
+      <!-- Label and input for brand_id -->
+      <div class="form-group">
+        <label for="brand_id" class="control-label">
+          Brand
+        </label>
+
+        <input type="text" id="brand_id" name="brand_id" placeholder="Brand" class="form-control" value="<%= @product.brand_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Product
+      </button>
+      or
+      <a href="/products/<%= @product.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
