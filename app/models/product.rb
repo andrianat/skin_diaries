@@ -7,6 +7,10 @@ class Product < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :brands,
+             :through => :favorites,
+             :source => :brands
+
   # Validations
 
 end
