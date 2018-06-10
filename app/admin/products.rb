@@ -1,4 +1,6 @@
 ActiveAdmin.register Product do
+
+ permit_params :category, :description, :active_ingredients, :use, :brand_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
