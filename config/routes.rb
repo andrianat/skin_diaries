@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Concern resource:
+  # CREATE
+  get "/concerns/new", :controller => "concerns", :action => "new"
+  post "/create_concern", :controller => "concerns", :action => "create"
+
+  # READ
+  get "/concerns", :controller => "concerns", :action => "index"
+  get "/concerns/:id", :controller => "concerns", :action => "show"
+
+  # UPDATE
+  get "/concerns/:id/edit", :controller => "concerns", :action => "edit"
+  post "/update_concern/:id", :controller => "concerns", :action => "update"
+
+  # DELETE
+  get "/delete_concern/:id", :controller => "concerns", :action => "destroy"
+  #------------------------------
+
   # Routes for the Favorite resource:
   # CREATE
   get "/favorites/new", :controller => "favorites", :action => "new"
