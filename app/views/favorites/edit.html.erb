@@ -33,7 +33,7 @@
           Products
         </label>
 
-        <input type="text" id="products_id" name="products_id" placeholder="Products" class="form-control" value="<%= @favorite.products_id %>">
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category, @favorite.products_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for brands_id -->
