@@ -51,7 +51,7 @@
           Concerns
         </label>
 
-        <input type="text" id="concerns_id" name="concerns_id" placeholder="Concerns" class="form-control" value="<%= @favorite.concerns_id %>">
+        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at, @favorite.concerns_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
