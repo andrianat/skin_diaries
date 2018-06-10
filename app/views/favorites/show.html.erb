@@ -6,16 +6,40 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Users</dt>
-      <dd><%= @favorite.users_id %></dd>
+      <dd>
+        <% if @favorite.user.present? %>
+          <a href="/users/<%= @favorite.users_id %>">
+            <%= @favorite.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Products</dt>
-      <dd><%= @favorite.products_id %></dd>
+      <dd>
+        <% if @favorite.products.present? %>
+          <a href="/products/<%= @favorite.products_id %>">
+            <%= @favorite.products.category %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Brands</dt>
-      <dd><%= @favorite.brands_id %></dd>
+      <dd>
+        <% if @favorite.brands.present? %>
+          <a href="/brands/<%= @favorite.brands_id %>">
+            <%= @favorite.brands.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Concerns</dt>
-      <dd><%= @favorite.concerns_id %></dd>
+      <dd>
+        <% if @favorite.concerns.present? %>
+          <a href="/concerns/<%= @favorite.concerns_id %>">
+            <%= @favorite.concerns.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
