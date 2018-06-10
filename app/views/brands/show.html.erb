@@ -5,8 +5,8 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @brand.name %></dd>
+      <dt>Brandname</dt>
+      <dd><%= @brand.brandname %></dd>
 
     </dl>
 
@@ -66,7 +66,7 @@
           Products
         </label>
 
-        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category), :class => "form-control") %>
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :created_at), :class => "form-control") %>
       </div>
 
       <!-- Label and input for brands_id -->
@@ -75,16 +75,16 @@
           Brands
         </label>
 
-        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :brandname), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for concerns_id -->
+      <!-- Label and input for needs_id -->
       <div class="form-group">
-        <label for="concerns_id" class="control-label">
-          Concerns
+        <label for="needs_id" class="control-label">
+          Needs
         </label>
 
-        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at), :class => "form-control") %>
+        <%= select_tag(:needs_id, options_from_collection_for_select(Need.all, :id, :need_type), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
@@ -108,7 +108,7 @@
       <% @brand.products.each do |product| %>
         <li class="list-group-item">
           <a href="/products/<%= product.id %>">
-            <%= product.category %>
+            <%= product.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/products/<%= product.id %>" class="btn btn-primary">

@@ -27,7 +27,7 @@
           Products
         </label>
 
-        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :category, @favorite.products_id), :class => "form-control") %>
+        <%= select_tag(:products_id, options_from_collection_for_select(Product.all, :id, :created_at, @favorite.products_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for brands_id -->
@@ -36,16 +36,16 @@
           Brands
         </label>
 
-        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :name, @favorite.brands_id), :class => "form-control") %>
+        <%= select_tag(:brands_id, options_from_collection_for_select(Brand.all, :id, :brandname, @favorite.brands_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for concerns_id -->
+      <!-- Label and input for needs_id -->
       <div class="form-group">
-        <label for="concerns_id" class="control-label">
-          Concerns
+        <label for="needs_id" class="control-label">
+          Needs
         </label>
 
-        <%= select_tag(:concerns_id, options_from_collection_for_select(Concern.all, :id, :created_at, @favorite.concerns_id), :class => "form-control") %>
+        <%= select_tag(:needs_id, options_from_collection_for_select(Need.all, :id, :need_type, @favorite.needs_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

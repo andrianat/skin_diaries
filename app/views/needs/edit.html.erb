@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @concern.errors.any? %>
-  <% @concern.errors.full_messages.each do |message| %>
+<% if @need.errors.any? %>
+  <% @need.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,20 +9,29 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Concern #<%= @concern.id %></h3>
+  <h3>Edit Need #<%= @need.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_concern/<%= @concern.id %>" method="post">
+    <form action="/update_need/<%= @need.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for need_type -->
+      <div class="form-group">
+        <label for="need_type" class="control-label">
+          Need type
+        </label>
+
+        <input type="text" id="need_type" name="need_type" placeholder="Need type" class="form-control" value="<%= @need.need_type %>">
+      </div>
+
       <button class="btn btn-warning">
-        Update Concern
+        Update Need
       </button>
       or
-      <a href="/concerns/<%= @concern.id %>">Cancel</a>
+      <a href="/needs/<%= @need.id %>">Cancel</a>
     </form>
   </div>
 </div>

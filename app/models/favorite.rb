@@ -3,7 +3,8 @@ class Favorite < ApplicationRecord
 
   belongs_to :concerns,
              :required => false,
-             :class_name => "Concern"
+             :class_name => "Need",
+             :foreign_key => "needs_id"
 
   belongs_to :products,
              :class_name => "Product",

@@ -54,21 +54,16 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :brands_name_cont, "Brand name contains" %>
-      <%= f.text_field :brands_name_cont, :class => "form-control", :placeholder => "Brand name contains" %>
+      <%= f.label :brands_brandname_cont, "Brand brandname contains" %>
+      <%= f.text_field :brands_brandname_cont, :class => "form-control", :placeholder => "Brand brandname contains" %>
     </div>
 
 <div class="form-group">
-      <%= f.label :products_category_cont, "Product category contains" %>
-      <%= f.text_field :products_category_cont, :class => "form-control", :placeholder => "Product category contains" %>
-    </div>
-
-<div class="form-group">
-          <%= f.label :created_at, "Concern Created at" %>
+          <%= f.label :created_at, "Product Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='concernsgteqcreated_atPicker'>
-                  <%= f.text_field :concerns_created_at_gteq, :class => "form-control", :placeholder => "Concern Created at greater than or equal to" %>
+              <div class='input-group date' id='productsgteqcreated_atPicker'>
+                  <%= f.text_field :products_created_at_gteq, :class => "form-control", :placeholder => "Product Created at greater than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -76,8 +71,8 @@
             </div>
 
             <div class='col-md-6'>
-              <div class='input-group date' id='concernslteqcreated_atPicker'>
-                  <%= f.text_field :concerns_created_at_lteq, :class => "form-control", :placeholder => "Concern Created at less than or equal to" %>
+              <div class='input-group date' id='productslteqcreated_atPicker'>
+                  <%= f.text_field :products_created_at_lteq, :class => "form-control", :placeholder => "Product Created at less than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -87,21 +82,26 @@
       </div>
       <script type="text/javascript">
           $(function () {
-              $('#concernsgteqcreated_atPicker').datetimepicker({
+              $('#productsgteqcreated_atPicker').datetimepicker({
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#concernslteqcreated_atPicker').datetimepicker({
+              $('#productslteqcreated_atPicker').datetimepicker({
                   useCurrent: false,
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#concernsgteqcreated_atPicker').on("dp.change", function (e) {
-                  $('#concernslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              $('#productsgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#productslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
               });
-              $('#concernslteqcreated_atPicker').on("dp.change", function (e) {
-                  $('#concernsgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              $('#productslteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#productsgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
               });
           });
       </script>
+
+<div class="form-group">
+      <%= f.label :concerns_need_type_cont, "Need need_type contains" %>
+      <%= f.text_field :concerns_need_type_cont, :class => "form-control", :placeholder => "Need need_type contains" %>
+    </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -120,7 +120,7 @@
         <th>Users</th>
         <th>Products</th>
         <th>Brands</th>
-        <th>Concerns</th>
+        <th>Needs</th>
         <th>Actions</th>
       </tr>
 
@@ -136,21 +136,21 @@
         <td>
           <% if favorite.products.present? %>
             <a href="/products/<%= favorite.products.id %>">
-              <%= favorite.products.category %>
+              <%= favorite.products.created_at %>
             </a>
           <% end %>
         </td>
         <td>
           <% if favorite.brands.present? %>
             <a href="/brands/<%= favorite.brands.id %>">
-              <%= favorite.brands.name %>
+              <%= favorite.brands.brandname %>
             </a>
           <% end %>
         </td>
         <td>
           <% if favorite.concerns.present? %>
-            <a href="/concerns/<%= favorite.concerns.id %>">
-              <%= favorite.concerns.created_at %>
+            <a href="/needs/<%= favorite.concerns.id %>">
+              <%= favorite.concerns.need_type %>
             </a>
           <% end %>
         </td>
