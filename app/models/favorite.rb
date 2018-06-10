@@ -1,6 +1,10 @@
 class Favorite < ApplicationRecord
   # Direct associations
 
+  belongs_to :concerns,
+             :required => false,
+             :class_name => "Concern"
+
   belongs_to :products,
              :class_name => "Product",
              :counter_cache => true
